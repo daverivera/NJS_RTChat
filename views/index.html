@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat with socket.io and node.js</title>
+	<style>
+		#users{
+			border: solid 1px #ccc;
+			height: 100px;
+			width: 300px;
+			margin-bottom: 10px;
+		}
+		#chat{
+			border: solid 1px #ccc;
+			height: 100px;
+			width: 900px;
+			overflow:scroll;
+			padding:10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<b>USERS</b>
+		<div id="users"></div>
+	</div>
+	<b>CHAT</b>
+	<div id="chat"></div>
+	<form id="send-message">
+		<input id="message" size="35"></input>
+		<input type="submit" value="Submit"></input>
+	</form>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="chat.js"></script>
+</body>
+</html>
