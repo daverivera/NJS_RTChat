@@ -1,8 +1,8 @@
 $(window).ready(function (){
 	var socket = io.connect();
 	var messageForm = $("#send-message");
-	var messageBox = $("#message");
-	var chat = $("#chat");
+	var messageBox = $("#message-input");
+	var chat = $("#message-box");
 
 	messageForm.submit(function (e) {
 		e.preventDefault();
@@ -15,6 +15,7 @@ $(window).ready(function (){
 	// 	chat.append(data + '<br />');
 	// });
 	socket.on('new message', function (username, data) {
+
 		chat.append("<b>"+ username +"</b>: " + data + '<br />');
 	});
 
@@ -23,9 +24,23 @@ $(window).ready(function (){
 	});
 
 	socket.on('update users', function (data) {
-		$("#users").empty();
+		$("#list").empty();
 		$.each(data, function (key, value) {
-			$("#users").append('<div>' + key + '</div>');
+			user = nuevoUser(key);
+			$("#list").append(user);
+			// $("#users").append('<div>' + key + '</div>');
 		});
 	});
+
+	var nuevoUser = function (username){
+		var user = '<div id="'+ username +'" class="user-item pure-g">';
+		user += '<div class="pure-u">';
+        user += '<img class="user-avatar" alt="'+ username +'" src="avatar.png" height="64" width="64">';
+        user += "</div>";
+        user += '<div class="pure-u-3-4">';
+        user += '<h5 class="user-name">'+ username +'</h5>';
+		user += '<p class="user-last-msg">';
+		user += "</p></div></div></div>";
+		return user;
+	}
 });

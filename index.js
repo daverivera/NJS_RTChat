@@ -14,7 +14,7 @@ server.listen(port);
 var usernames = {};
 
 app.get('/', function (req, res) {
-	res.render(__dirname + '/views/index.html');
+	res.render(__dirname + '/views/archivo.html');
 });
 
 
